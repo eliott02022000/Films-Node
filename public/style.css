@@ -1,0 +1,29 @@
+.loginform {
+    display: flex;
+    margin-left: 40vw;
+    margin-top: 30vh;
+    color: black;
+    font-size: 20px
+}
+
+.loginform label {
+    margin-top: 20px;
+}
+
+.moveinput {
+    margin-left: 10vh;
+    margin-top: 10px;
+}
+/* 
+.nav {
+    background-color: white;
+    display: flex;
+    justify-content: center
+}
+
+.nav a {
+    font-size: 20px;
+    margin: 20px;
+    text-decoration: none;
+    color: black;
+} */

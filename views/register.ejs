@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
+        <title>Register Page</title>
+    </head>
+    <body>
+        <%- include('parts/header') %> 
+        <div class="loginform">
+            <form name="myForm">
+                <div>
+                    <label for="email" name="firstname">Rentrez votre firstname</label>
+                    <input type="text" name="firstname">
+                </div>
+                <br>
+                <div>
+                    <label for="email" name="lastname">Rentrez votre lastname</label>
+                    <input type="text" name="lastname">
+                </div>
+                <br>
+                <div>
+                    <label for="email">Rentrez votre email</label>
+                    <input type="text" name="email_">
+                </div>
+                <br>
+                <div>
+                    <label for="pass">Rentrez votre Mot de passe</label>
+                    <input type="password" name="password">
+                </div>
+                <br>
+                <div class="moveinput">
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+
+       <script>
+
+        document.forms[0].addEventListener("submit", function (event) {
+
+            event.preventDefault()
+
+            let [ 
+                firstname,
+                lastname,
+                email, 
+                password 
+            ] = this
+
+            fetch("/api/users", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstname: firstname.value,
+                    lastname: lastname.value,
+                    email: email.value,
+                    password: password.value
+                })
+            }).then((res) => {
+                if (res.status === 200) {
+                    window.location.replace('/')
+                } 
+            })
+        })
+
+       </script>
+
+    </body> 
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <%- include('parts/header') %> 
+
+        <h2><%= name %></h2>
+
+        <form action="/task" method="POST">
+            <input type="text" name="name" placeholder="add new task">
+            <input type="submit" value="OK">
+          </form>
+
+        <ul>
+        
+        <% if (data.length == 0) { %>
+            <span style="color: red">Vous n'avez pas de data !!! </span>
+        <% } %>
+
+        <% data.forEach((name) => { %>
+            <li><%= name %></li>
+        <% }); %>
+
+        <br><br> <hr> <br>
+
+        Films:
+        <% films.forEach((film) => { %>
+            <li id="film_<%= film.id_film %>"> 
+                <a href="/films/<%= film.id_film %>"> <%= film.titre %> </a>
+                |
+                 <a href="/films/<%= film.id_film %>" style="color: red" class="delete-film"> SUPPRIMER </a>
+            </li>
+        <% }); %>
+
+        </ul>
+
+        <script>
+            var socket = io('http://localhost:3000');
+
+            socket.on('films', (data) => {
+                document.querySelector(`#film_${data.id_film}`).remove()
+            });
+
+            document.querySelectorAll('.delete-film').forEach((el) => {
+
+                console.log(el)
+
+                el.addEventListener('click', function (e) {
+                    e.preventDefault()
+                    fetch(this.href, {
+                        method: "DELETE"
+                    })
+                })
+
+            })
+            
+        </script> 
+
+    </body> 
+</html>
