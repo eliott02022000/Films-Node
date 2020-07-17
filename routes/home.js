@@ -2,6 +2,7 @@ const express = require('express'),
       router = express.Router(),
       sql = require('../database');
       let { Film } = require('../database')
+      let { Distributeurs } = require('../database')
 
 router.get('/', (request, response) => {
 
@@ -9,11 +10,14 @@ router.get('/', (request, response) => {
     if(!request.session.user_id) {
         return response.redirect('/login');
     }
-    response.render('index', {
-        name: request.current_user.firstname + request.session.user_id,
-        data: [],
-        films: []
-    });
+
+    return response.redirect('/films');
+    // response.render('index', {
+    //     name: request.current_user.firstname + request.session.user_id,
+    //     data: [],
+    //     films: [],
+    //     distributeurs: [],
+    // });
 
 });
 
@@ -45,6 +49,33 @@ router.get('/films', (request, response) => {
     .finally(err => response.status(404))
 })
 
+router.get('/distributeurs', (request, response) => {
+
+    let page = parseInt(request.query.page);
+    let limit = parseInt(request.query.limit);
+    let order = request.query.order;
+
+    page = page ? page : 1;
+    limit = limit ? limit : 20;
+    order = order ? order : "id_distributeur";
+    
+    Distributeurs.findAndCountAll({
+        limit: limit,
+        offset: (page-1) * limit,
+        order: [order]
+    })
+    .then(result => {
+        count = result.count
+        response.render('distributeurs', {
+            distributeurs: result.rows,
+            count: result.count,
+            limit: limit,
+            order: order
+        });
+    })
+    .catch(err => { response.send(err) })
+    .finally(err => response.status(404))
+})
 
 router.get('/login', (request, response) => {
 

@@ -1,3 +1,6 @@
+body {
+    margin: 0px;
+}
 .loginform {
     display: flex;
     margin-left: 40vw;
@@ -27,3 +30,116 @@
     text-decoration: none;
     color: black;
 } */
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: lightblue;
+    color: black;
+    padding: 0;
+
+}
+
+.header_right {
+    display: flex;
+    justify-content: space-around; 
+}
+
+.header_right div {
+    margin: 20px;
+}
+
+.header_left h2{
+    margin: 20px;
+    font-size: 30px;
+}
+
+
+.filmcss {
+    font-size: 30px;
+}
+
+.limit {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_limit {
+    background-color: lightblue; /* Green */
+    border: 1px solid gray;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.btn_limit a {
+    text-decoration: none;
+    color: black;
+}
+
+.btn_show {
+    background-color: lightblue; /* Green */
+    border: 1px solid gray;
+    color: white;
+    padding: 7px 12px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.stop {
+    width: 200px;
+}
+
+.btn_show a {
+    text-decoration: none;
+    color: green;
+}
+
+.howmany {
+    text-align: center;
+}
+
+.tr td{
+    border: 1px solid lightgray;
+    margin: 5px;
+    text-align: center;
+    width: 500px;
+    height: 20px;
+}
+
+.tr th{
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+}
+
+.tr th a {
+    color: black;
+    font-size: 20px;
+}
+
+.headernav {
+    display: flex;
+    justify-content: center;
+}
+
+.header_mid {
+    display: flex;
+    margin: 20px;
+    font-size: 23px;
+}
+
+.header_mid a{
+    margin: 20px;
+    color: black;
+}

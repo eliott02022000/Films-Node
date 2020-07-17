@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+        <title>Distributeurs</title>
+    </head>
+    <body>
+
+        <div>
+            <header>
+                <div class="header_left"><h2>E-Movie</h2></div>
+                <div class="header_mid">
+                    <div><a href="/films">Films</a></div>
+                    <div><a href="/distributeurs">Distributeurs</a></div>
+                </div>
+                <nav class="header_right">
+                    <div class="filmcss"><strong>Distributeurs : (<%= count %>)</strong></div> 
+                </nav>
+            </header>
+        </div>
+        
+        <div class="howmany"><h2>Combien de Distributeurs par page ?</h2></div>
+        <div class="limit">
+            <div>
+                <button class="btn_limit"><a href="?limit=10">10</a></button>
+                <button class="btn_limit"><a href="?limit=20">20</a></button>
+                <button class="btn_limit"><a href="?limit=50">50</a></button>
+            </div>
+
+        </div>
+        <div>
+            <h2>Une page en particulier ?</h2>
+            <% for(var i=1; i <= Math.ceil(count/limit); i++) { %>
+                <button class="btn_show"><a href="?page=<%= i %>&limit=<%= limit %>&order=<%= order %>"><%= i %></a></button>
+            <% } %>
+        </div>
+  
+        <table>
+            <tr class="tr">
+                <th>
+                    <a class="filmlink" href="?order=id_distributeur">ID</a>
+                </th>
+                <th>
+                    <a class="filmlink" href="?order=nom">Nom</a>
+                </th>
+                <th>
+                    <a class="filmlink" href="?order=telephone">Telephone</a>
+                </th>
+                <th>
+                    <a class="filmlink" href="?order=adresse">Adresse</a>
+                </th>
+                <th>
+                    <a class="filmlink" href="?order=cpostal">Code postal</a>
+                </th>
+                <th>
+                    <a class="filmlink" href="?order=ville">Ville</a>
+                </th>
+                <th>
+                    <a class="filmlink" href="?order=pays">Pays</a>
+                </th>
+            </tr>
+            <% for(var i=0; i < distributeurs.length; i++) { %>
+                <tr class="tr">
+                    <td>
+                        <%= distributeurs[i].id_distributeur %>
+                    </td>
+                    <td>
+                        <%= distributeurs[i].nom %>
+                    </td>
+                    <td>
+                        <%= distributeurs[i].telephone %>
+                    </td>
+                    <td>
+                        <%= distributeurs[i].adresse %>
+                    </td>
+                    <td>
+                        <%= distributeurs[i].cpostal %>
+                    </td>
+                    <td>
+                        <%= distributeurs[i].ville %>
+                    </td>
+                    <td>
+                        <%= distributeurs[i].pays %>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+
+    </body>
+
+    <script>
+        document.querySelectorAll(".filmlink").forEach((el) => {
+            el.addEventListener('click', function(e) {
+                var d = el.getAttribute("d")
+                var link = el.getAttribute("link")
+                if (d) {
+                    el.setAttribute("link", link + "&d=1")
+                    el.setAttribute("d", false)
+                }
+                else {
+                    el.setAttribute("d", true)
+                }
+            })
+        })
+    </script>
+
+</html>

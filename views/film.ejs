@@ -8,28 +8,37 @@
     </head>
     <body>
 
-        <strong>Film (<%= count %>)</strong>
+        <div>
+            <header>
+                <div class="header_left"><h2>E-Movie</h2></div>
+                <div class="header_mid">
+                    <div><a href="/films">Films</a></div>
+                    <div><a href="/distributeurs">Distributeurs</a></div>
+                </div>
+                <nav class="header_right">
+                    <div class="filmcss"><strong>Film : (<%= count %>)</strong></div> 
+                </nav>
+            </header>
+        </div>
+        
+        <div class="howmany"><h2>Combien de films par page ?</h2></div>
+        <div class="limit">
+            <div>
+                <button class="btn_limit"><a href="?limit=10">10</a></button>
+                <button class="btn_limit"><a href="?limit=20">20</a></button>
+                <button class="btn_limit"><a href="?limit=50">50</a></button>
+            </div>
 
-        <br>
-        <br>
-
-        <button><a href="?limit=10">10</a></button>
-        <button><a href="?limit=20">20</a></button>
-        <button><a href="?limit=50">50</a></button>
-
-        <br>
-        <br>
-
-        <% for(var i=1; i <= Math.ceil(count/limit); i++) { %>
-            <button><a href="/?page=<%= i %>&limit=<%= limit %>&order=<%= order %>"><%= i %></a></button>
-        <% } %>
-
-        <br>
-        <br>
-
-
+        </div>
+        <div>
+            <h2>Une page en particulier ?</h2>
+            <% for(var i=1; i <= Math.ceil(count/limit); i++) { %>
+                <button class="btn_show"><a href="?page=<%= i %>&limit=<%= limit %>&order=<%= order %>"><%= i %></a></button>
+            <% } %>
+        </div>
+  
         <table>
-            <tr>
+            <tr class="tr">
                 <th>
                     <a class="filmlink" href="?order=id_film">ID</a>
                 </th>
@@ -53,9 +62,9 @@
                 </th>
             </tr>
             <% for(var i=0; i < films.length; i++) { %>
-                <tr>
+                <tr class="tr">
                     <td>
-                        <%= films[i].id %>
+                        <%= films[i].id_film %>
                     </td>
                     <td>
                         <%= films[i].titre %>

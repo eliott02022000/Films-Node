@@ -8,6 +8,7 @@ const sequelize = new Sequelize('cinema', 'root', 'root', {
 });
 
 const Film = require('./models/Film')(sequelize, DataTypes);
+const Distributeurs = require('./models/Distributeurs')(sequelize, DataTypes);
 const User = require('./models/User')(sequelize, DataTypes);
 
 sequelize.sync({
@@ -20,4 +21,5 @@ module.exports = {
     sequelize: sequelize,
     Film: Film,
     User: User,
+    Distributeurs: Distributeurs,
 }
