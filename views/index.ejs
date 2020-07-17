@@ -12,26 +12,11 @@
     </head>
     <body>
         
-        <%- include('parts/header') %> 
-
         <h2><%= name %></h2>
-
-        <form action="/task" method="POST">
-            <input type="text" name="name" placeholder="add new task">
-            <input type="submit" value="OK">
-          </form>
-
-        <ul>
-        
-        <% if (data.length == 0) { %>
-            <span style="color: red">Vous n'avez pas de data !!! </span>
-        <% } %>
 
         <% data.forEach((name) => { %>
             <li><%= name %></li>
         <% }); %>
-
-        <br><br> <hr> <br>
 
         Films:
         <% films.forEach((film) => { %>

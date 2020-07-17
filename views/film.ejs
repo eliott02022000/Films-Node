@@ -14,13 +14,14 @@
                 <div class="header_mid">
                     <div><a href="/films">Films</a></div>
                     <div><a href="/distributeurs">Distributeurs</a></div>
+                    <div><a href="/genre">Genres</a></div>
                 </div>
                 <nav class="header_right">
-                    <div class="filmcss"><strong>Film : (<%= count %>)</strong></div> 
+                    <div class="filmcss"><strong>Films : (<%= count %>)</strong></div> 
                 </nav>
             </header>
         </div>
-        
+
         <div class="howmany"><h2>Combien de films par page ?</h2></div>
         <div class="limit">
             <div>
@@ -84,6 +85,9 @@
                     <td>
                         <%= films[i].annee_production %>
                     </td>
+                    <td>
+                        <a href="/films/<%= films.id_film %>" style="color: red" class="delete-film"> Supprimer </a>
+                    </td>
                 </tr>
             <% } %>
         </table>
@@ -103,6 +107,22 @@
                     el.setAttribute("d", true)
                 }
             })
+        })
+
+        var socket = io('http://localhost:3000');
+
+        socket.on('films', (data) => {
+            document.querySelector(`#film_${data.id_film}`).remove()
+        });
+
+        document.querySelectorAll('.delete-film').forEach((el) => {
+            el.addEventListener('click', function (e) {
+                e.preventDefault()
+                fetch(this.href, {
+                    method: "DELETE"
+                })
+            })
+
         })
     </script>
 

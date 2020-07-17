@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/style.css">
-        <title>Distributeurs</title>
+        <title>Genre</title>
     </head>
     <body>
 
@@ -17,12 +17,12 @@
                     <div><a href="/genre">Genres</a></div>
                 </div>
                 <nav class="header_right">
-                    <div class="filmcss"><strong>Distributeurs : (<%= count %>)</strong></div> 
+                    <div class="filmcss"><strong>Genre : (<%= count %>)</strong></div> 
                 </nav>
             </header>
         </div>
-    
-        <div class="howmany"><h2>Combien de Distributeurs par page ?</h2></div>
+        
+        <div class="howmany"><h2>Combien de Genre par page ?</h2></div>
         <div class="limit">
             <div>
                 <button class="btn_limit"><a href="?limit=10">10</a></button>
@@ -41,49 +41,19 @@
         <table>
             <tr class="tr">
                 <th>
-                    <a class="filmlink" href="?order=id_distributeur">ID</a>
+                    <a class="filmlink" href="?order=id_genre">ID</a>
                 </th>
                 <th>
                     <a class="filmlink" href="?order=nom">Nom</a>
                 </th>
-                <th>
-                    <a class="filmlink" href="?order=telephone">Telephone</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=adresse">Adresse</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=cpostal">Code postal</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=ville">Ville</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=pays">Pays</a>
-                </th>
             </tr>
-            <% for(var i=0; i < distributeurs.length; i++) { %>
+            <% for(var i=0; i < genres.length; i++) { %>
                 <tr class="tr">
                     <td>
-                        <%= distributeurs[i].id_distributeur %>
+                        <%= genres[i].id_genre %>
                     </td>
                     <td>
-                        <%= distributeurs[i].nom %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].telephone %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].adresse %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].cpostal %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].ville %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].pays %>
+                        <%= genres[i].nom %>
                     </td>
                 </tr>
             <% } %>
