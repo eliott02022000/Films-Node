@@ -56,43 +56,37 @@ app.use(homeRouter)
 app.use(usersRouter)
 
 
-// app.get('/email', (req, res) => {
+app.get('/email', (req, res) => {
 
-//     async function main() {
-//         // Generate test SMTP service account from ethereal.email
-//         // Only needed if you don't have a real mail account for testing
-      
+    async function main() {
 
-//         const gmailEmail = 'XXXX';
-//         const gmailPassword = 'XXXXXXXX';
-//         // create reusable transporter object using the default SMTP transport
-//         let transporter = nodemailer.createTransport({
-//           host: "smtp.gmail.com",
-//           auth: {
-//             user: gmailEmail, // generated ethereal user
-//             pass: gmailPassword, // generated ethereal password
-//           },
-//         });
+        const gmailEmail = 'XXXX';
+        const gmailPassword = 'XXXXXXXX';
+
+        let transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          auth: {
+            user: gmailEmail, 
+            pass: gmailPassword, 
+          },
+        });
       
-//         // send mail with defined transport object
-//         let info = await transporter.sendMail({
-//           from: gmailEmail, // sender address
-//           to: "eliott.jarmoune@outlook.com", // list of receivers
-//           subject: "Hello ✔", // Subject line
-//           text: "Hello world?", // plain text body
-//           html: "<b>Hello world?</b>", // html body
-//         });
+        // send mail with defined transport object
+        let info = await transporter.sendMail({
+          from: gmailEmail, 
+          to: "test@test.fr",
+          subject: "Hello ✔", 
+          text: "Hello world?",
+          html: "<b>Hello world?</b>",
+        });
       
-//         console.log("Message sent: %s", info.messageId);
-//         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+        console.log("Message sent: %s", info.messageId);
       
-//         // Preview only available when sending through an Ethereal account
-//         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-//         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-//       }
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      }
       
-//       main().catch(console.error);
-// })
+      main().catch(console.error);
+})
 app.get('/404', (request, response) => {
     response.render('errors/404')
 })

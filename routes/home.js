@@ -147,6 +147,6 @@ router.get('/register', (request, response) => {
 
     response.render('register');
 
-})
+});
 
-module.exports = router
+module.exports = router;
