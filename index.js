@@ -19,10 +19,10 @@ app.set('view engine', 'ejs');
 app.use((request, response, next) => {
     request.io = io;
     request.isFrench = () => {
-        return (request.headers['accept-language'] && request.headers['accept-language'].includes('fr'))
+        return (request.headers['accept-language'] && request.headers['accept-language'].includes('fr'));
     };
     next();
-})
+});
 
 app.use(session({
     secret: 'aziheoaiheoanoadoaq azdak',
@@ -36,10 +36,10 @@ app.use((request, response, next) => {
     if (request.session.user_id) {
         User.findByPk(request.session.user_id).then((user) => {
             if (!user.ban) {
-                request.current_user = user
+                request.current_user = user;
                 next();
             } else {
-                request.session.user_id = null
+                request.session.user_id = null;
                 response.render('errors/403')
             }
         });
@@ -49,11 +49,11 @@ app.use((request, response, next) => {
 });
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-app.use(homeRouter)
-app.use(usersRouter)
+app.use(homeRouter);
+app.use(usersRouter);
 
 
 app.get('/email', (req, res) => {
@@ -90,11 +90,11 @@ app.get('/email', (req, res) => {
 
 app.delete('/films/:id', (request, response) => {
     console.log(request.params.id);
-})
+});
 
 
 app.get('/404', (request, response) => {
-    response.render('errors/404')
-})
+    response.render('errors/404');
+});
 
 server.listen(3000);
