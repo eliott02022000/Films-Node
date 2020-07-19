@@ -38,11 +38,11 @@ router.get('/api/users', async (request, response) => {
                 ]
             }
         ]
-    })
+    });
 
-    response.json(users)
+    response.json(users);
 
-})
+});
 
 router.post('/api/users', validatorUserCreate , (request, response) => {
 
@@ -53,29 +53,29 @@ router.post('/api/users', validatorUserCreate , (request, response) => {
         birth_date: new Date(),
         password: sha1(request.body.password)
     }).then((user) => {
-        response.json({status: 201, data: user})
-    })
+        response.json({status: 201, data: user});
+    });
 
-})
+});
 
 router.all('/api/users/:id(\\d+)', (request, response, next) => {
 
     User.findByPk(request.params.id).then((user) => {
 
         if (user) {
-            request.user = user
-            next()
+            request.user = user;
+            next();
         } else {
             response.status(404).json({message: "user not found"})
         }
 
-    })
+    });
 
-})
+});
 
 router.get('/api/users/:id(\\d+)', (request, response) => {
-    response.json(request.user)
-})
+    response.json(request.user);
+});
 
 router.put('/api/users/:id(\\d+)', (request, response) => {
 
@@ -83,17 +83,18 @@ router.put('/api/users/:id(\\d+)', (request, response) => {
         firstname: request.body.firstname,
         lastname:  request.body.lastname
     }).then((user) => {
-        response.json(user)
-    })
+        response.json(user);
+    });
 
-})
+});
 
 router.delete('/api/users/:id(\\d+)', (request, response) => {
 
     request.user.destroy().then((user) => {
-        response.json(user)
-    })
+        response.json(user);
+    });
 
-})
+});
 
-module.exports = router
+
+module.exports = router;

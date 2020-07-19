@@ -49,17 +49,6 @@
                 <th>
                     <a class="filmlink" href="?order=telephone">Telephone</a>
                 </th>
-                <th>
-                    <a class="filmlink" href="?order=adresse">Adresse</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=cpostal">Code postal</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=ville">Ville</a>
-                </th>
-                <th>
-                    <a class="filmlink" href="?order=pays">Pays</a>
                 </th>
             </tr>
             <% for(var i=0; i < distributeurs.length; i++) { %>
@@ -72,18 +61,6 @@
                     </td>
                     <td>
                         <%= distributeurs[i].telephone %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].adresse %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].cpostal %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].ville %>
-                    </td>
-                    <td>
-                        <%= distributeurs[i].pays %>
                     </td>
                 </tr>
             <% } %>

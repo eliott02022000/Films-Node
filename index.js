@@ -86,7 +86,13 @@ app.get('/email', (req, res) => {
       }
       
       main().catch(console.error);
+});
+
+app.delete('/films/:id', (request, response) => {
+    console.log(request.params.id);
 })
+
+
 app.get('/404', (request, response) => {
     response.render('errors/404')
 })
